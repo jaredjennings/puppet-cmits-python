@@ -23,13 +23,11 @@ class python {
             case $operatingsystemrelease {
                 /6\..*/: { include python::rhel6 }
                 /5\..*/: { include python::rhel5 }
-                default: { unimplemented() }
+                default: { fail "unimplemented on ${::osfamily} ${::operatingsystemrelease}" }
             }
         }
 # Python not yet implemented under Darwin.        
         'Darwin': {}
-        default: {
-            unimplemented()
-        }
+        default: { fail "unimplemented on ${::osfamily}" }
     }
 }
